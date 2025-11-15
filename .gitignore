@@ -1,0 +1,53 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build output
+dist/
+build/
+.next/
+out/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+*.log.*
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+
+# Misc
+.lock-wscript
+.eslintcache
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+
