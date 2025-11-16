@@ -1,5 +1,19 @@
 import {Component} from 'react';
 
+/*constructor()
+render()
+componentDidMount()
+
+// state update
+render()
+componentDidUpdate()
+
+// another update
+render()
+componentDidUpdate()
+
+// when leaving page
+componentWillUnmount()*/
 class LifecycleLogger extends Component {
     constructor(props) {
         super(props); // we need to call super() in order to use the props in the constructor
