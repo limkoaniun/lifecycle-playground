@@ -1,5 +1,7 @@
 import {useState} from 'react';
-import LifecycleLogger from './components/LifecycleLogger';
+import LifecycleLogger from "./components/LifecycleLogger.jsx";
+
+// import LifecycleLoggerClass from './components/LifecycleLoggerClass.jsx';
 
 function App() {
     const [showLogger, setShowLogger] = useState(false);
@@ -17,6 +19,7 @@ function App() {
             </button>
 
             {/*{showLogger && <LifecycleLogger message="Hello from LifecycleLogger!"/>}*/}
+            {/*{showLogger && <LifecycleLoggerClass/>}*/}
             {showLogger && <LifecycleLogger/>}
         </div>
     );

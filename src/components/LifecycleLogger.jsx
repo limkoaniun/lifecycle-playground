@@ -1,61 +1,52 @@
-import {Component} from 'react';
+import {useEffect, useState} from "react";
 
-/*constructor()
-render()
-componentDidMount()
+const LifecycleLogger = () => {
+    const [count, setCount] = useState(0);
 
-// state update
-render()
-componentDidUpdate()
-
-// another update
-render()
-componentDidUpdate()
-
-// when leaving page
-componentWillUnmount()*/
-class LifecycleLogger extends Component {
-    constructor(props) {
-        super(props); // we need to call super() in order to use the props in the constructor
-        // and this super() is from the Component class we are inheriting from
-        console.log("Component initialized!");
-        this.state = {
-            count: 0
-        } // this equivalent to const [count, setCount] = useState(0);
-    }
-
-    componentDidMount() {
-        // we do API calls in this lifecycle method AKA step 1 Mounting
+    // ComponentDidMount
+    useEffect(() => {
         console.log("Component mounted!");
-    }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.count !== this.state.count) {
-            console.log("Component updated!", this.state.count);
+        // ComponentWillUnmount
+        return () => {
+            console.log("Component unmounted!");
         }
-    }
+    }, [])
 
-    componentWillUnmount() {
-        // we do cleanup in this lifecycle method AKA step 4 Unmounting
-        console.log("Component unmounted!");
-    }
+    // ComponentDidUpdate
+    useEffect(() => {
+        if (count > 0) {
+            console.log("Component updated!", count);
+        }
+    }, [count])
 
-    incrementCount = () => {
-        this.setState(prevState => ({count: prevState.count + 1}));
+    const incrementCount = () => {
+        // we don't do this setCount(count + 1)
+        // setCount(count + 1)
+        // setCount(count + 1)
+        // setCount(count + 1)
+        // this got a delay effect mechanism, so we use the prevCount for the latest value
+        setCount((prevCount) => (prevCount + 1));
     }
-
-    render() {
-        return (
-            <div className="logger-container">
-                <h2>LifecycleLogger (Class Component)</h2>
-                <p>{this.props.message}</p>
-                <p>Count: {this.state.count}</p>
-                <button onClick={this.incrementCount} className="secondary-btn">
-                    Increment
-                </button>
-            </div>
-        )
-    }
+    return (
+        <div className="logger-container">
+            <h2>LifecycleLogger (Function Component)</h2>
+            <p>
+                Count: {count}
+            </p>
+            {/*The function you give is a callback
+            Because you gave it to onClick
+            And they call it back later when the event happens*/}
+            {/*<button onClick={() => {
+                setCount(count + 1)
+            }} className="secondary-btn">
+                Update
+            </button>*/}
+            <button onClick={incrementCount} className="secondary-btn">
+                Update
+            </button>
+        </div>
+    );
 }
 
 export default LifecycleLogger;
